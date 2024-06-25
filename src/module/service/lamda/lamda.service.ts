@@ -71,9 +71,11 @@ export class LamdaService {
     this.getTradeDetail().subscribe({
       next: (res) => {
         if (res.status === 201) {
-          this.socketService.emitEvent('logger', 'Invalid Token');
           if (res.data.code === 'INVALID_TOKEN') {
+            this.socketService.emitEvent('logger', 'Invalid Token');
             this.fetchConnectionId();
+          } else if(res.data.code === 'TOO_MANY_ORDERS') {
+            this.socketService.emitEvent('logger', res.data.message);
           }
           return;
         }
