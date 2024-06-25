@@ -34,7 +34,6 @@ export class LamdaService {
   subscribeMasterSlaveDetail() {
     this.getMasterSlaveDetail().subscribe({
       next: (res) => {
-        console.log('res: ', res.data);
         this.masterTradeDetail = res.data;
         this.socketService.emitEvent(
           'logger',
