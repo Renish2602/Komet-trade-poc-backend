@@ -66,7 +66,7 @@ export class LamdaService {
   fetchTradeDetail() {
     this.socketService.emitEvent(
       'logger',
-      'Replicating Master Trad',
+      'Replicating Master Trade...',
     );
     this.getTradeDetail().subscribe({
       next: (res) => {
@@ -79,7 +79,7 @@ export class LamdaService {
         }
         this.socketService.emitEvent(
           'logger',
-          'Successfully Replicated Master Trad',
+          'Successfully Replicated Master Trade...',
         );
         this.socketService.emitEvent('trade', res.data);
       },
